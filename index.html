@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogin</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+
+<body class="main-layout">
+    <div class="main-screen full" onclick="toggleMenu()"></div>
+
+    <header class="main-header full main-layout">
+        <div class="header-container flex align-center space-between">
+            <div class="logo">Blogin<span class="logo-dot">.</span></div>
+            <nav class="main-nav">
+                <ul class="flex clean-list nav-list">
+                    <li class="nav-item dropdown" onclick="setActive(this);">
+                        <a href="#">Journal</a>
+                        <div class="main-dropdown clean-list">
+                            <a href="#">October 2016</a>
+                            <a href="#">January 2017</a>
+                            <a href="#">April 2017</a>
+                            <a href="#">July 2017</a>
+
+                        </div>
+                    <li class="nav-item" onclick="setActive(this)"><a href="#">About</a></li>
+                    <li class="nav-item" onclick="setActive(this)"><a href="#">Work</a></li>
+                    <li class="nav-item" onclick="setActive(this)"><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle-btn" onclick="toggleMenu()">☰</button>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="card flex">
+            <div class="img-container"><img src="img/001.png" class="card-image"></div>
+            <div class="text-container">
+                <h2 class="card-title">Duis aute irure dolor in henderit in voluptate.</h2>
+                <p class="card-text-p">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip
+                    ex ea commo doconsequat, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                    fugiat nulla pariatur... </p>
+                <button class="card-btn btn-round" onclick="onOpenModal()">Continue Reading</button>
+            </div>
+
+        </div>
+        <div class="card flex">
+            <div class="img-container"><img src="img/002.png" class="card-image"></div>
+            <div class="text-container">
+                <h2 class="card-title">Duis aute irure dolor in henderit in voluptate.</h2>
+                <p class="card-text-p">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip
+                    ex ea commo doconsequat, sunt in culpa qui officia deserunt mollit anim id est laborum. <br> <br>
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                    fugiat nulla pariatur... </p>
+                <button class="card-btn btn-round" onclick="onOpenModal()">Continue Reading</button>
+            </div>
+
+        </div>
+        <div class="card flex">
+            <div class="img-container"><img src="img/003.png" class="card-image"></div>
+            <div class="text-container">
+                <h2 class="card-title">Duis aute irure dolor in henderit in voluptate.</h2>
+                <p class="card-text-p">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip
+                    ex ea commo doconsequat, sunt in culpa qui officia deserunt mollit anim id est laborum. <br> <br>
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                    fugiat nulla pariatur... </p>
+                <button class="card-btn btn-round" onclick="onOpenModal()">Continue Reading</button>
+            </div>
+
+        </div>
+
+        <div class="main-content-footer flex space-between align-center">
+            <a class="flex align-items space-between" href="#"><img src="img/icons/prev-arr.svg">previous</a>
+            <a class="flex align-items space-between" href="#">next <img src="img/icons/next-arr.svg"></a>
+        </div>
+
+    </main>
+
+    <footer class="main-layout-footer full">
+        <div class="logo">Blogin<span class="logo-dot">.</span></div>
+        <small>© 2014 Blogin.com - All Rights Reserved - Find more free Templates at <span>Pixelhint.com</span></small>
+        <ul class="social-links clean-list flex align-items space-between">
+            <li><a href="#" class="fa facebook"></a></li>
+            <li><a href="#" class="fa twitter"></a></li>
+            <li><a href="#" class="fa behance"></a></li>
+            <li><a href="#" class="fa dribbble"></a></li>
+        </ul>
+    </footer>
+    <div class="modal">
+        <h2>Join us to get access to the latest stories!</h2>
+        <label for="">Email
+        </label>
+        <div class="user-info">
+            <input placeholder="TYPE YOUR EMAIL HERE FOR MORE INFO!" type="email">
+            <button class="send-email">send</button>
+        </div>
+        <button onclick="onCloseModal()" class="close-modal">close</button>
+    </div>
+    <div class="overlay"></div>
+    <script>
+
+        function toggleMenu() {
+            document.body.classList.toggle('menu-open')
+        }
+        function setActive(el) {
+            var elNavItems = document.querySelectorAll('.nav-item');
+
+            // Loop through the buttons
+            for (var i = 0; i < elNavItems.length; i++) {
+                // Add a click event listener to each button
+                elNavItems[i].addEventListener('click', function () {
+                    // When the button is clicked, remove the active class from all buttons
+                    for (var j = 0; j < elNavItems.length; j++) {
+                        elNavItems[j].classList.remove('active');
+                    }
+                    // Then add the active class to the clicked button                    
+                    this.classList.add('active');
+
+                });
+            }
+
+
+        }
+
+
+        function onOpenModal() {
+            const overlay = document.querySelector('.overlay')
+            overlay.classList.add('active')
+            const modal = document.querySelector('.modal')
+            modal.classList.add('open')
+        }
+
+        function onCloseModal() {
+            const overlay = document.querySelector('.overlay')
+            const modal = document.querySelector('.modal')
+            modal.classList.remove('open')
+            overlay.classList.remove('active')
+
+        }
+    </script>
+</body>
+
+</html>
